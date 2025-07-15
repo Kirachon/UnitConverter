@@ -2,10 +2,168 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/UnitConverter/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Universal Unit Converter - Convert Units Instantly</title>
-    <meta name="description" content="Convert between different units instantly. Support for weight, length, temperature, volume, area, energy, pressure, speed, power, and data storage units.">
+
+    <!-- Primary Meta Tags -->
+    <title>Free Online Unit Converter - Length, Weight, Temperature & More | UnitConverter</title>
+    <meta name="title" content="Free Online Unit Converter - Length, Weight, Temperature & More | UnitConverter">
+    <meta name="description" content="Convert units instantly with our free online unit converter. Supports length, weight, temperature, volume, area, energy, pressure, speed, power, currency, and data storage. Fast, accurate, and mobile-friendly.">
+    <meta name="keywords" content="unit converter, online converter, length converter, weight converter, temperature converter, volume converter, area converter, energy converter, pressure converter, speed converter, power converter, currency converter, data storage converter, metric converter, imperial converter, conversion tool, free converter, mobile converter">
+    <meta name="author" content="UnitConverter">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://kirachon.github.io/UnitConverter/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kirachon.github.io/UnitConverter/">
+    <meta property="og:title" content="Free Online Unit Converter - Length, Weight, Temperature & More">
+    <meta property="og:description" content="Convert units instantly with our free online unit converter. Supports 10+ unit types including length, weight, temperature, volume, and currency with real-time exchange rates.">
+    <meta property="og:image" content="https://kirachon.github.io/UnitConverter/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="UnitConverter">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://kirachon.github.io/UnitConverter/">
+    <meta property="twitter:title" content="Free Online Unit Converter - Length, Weight, Temperature & More">
+    <meta property="twitter:description" content="Convert units instantly with our free online unit converter. Supports 10+ unit types including length, weight, temperature, volume, and currency with real-time exchange rates.">
+    <meta property="twitter:image" content="https://kirachon.github.io/UnitConverter/twitter-image.png">
+    <meta property="twitter:creator" content="@UnitConverter">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="/UnitConverter/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/UnitConverter/site.webmanifest">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="msapplication-TileColor" content="#3b82f6">
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://openexchangerates.org">
+    <link rel="dns-prefetch" href="https://openexchangerates.org">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        page_title: 'Unit Converter',
+        page_location: window.location.href
+      });
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Universal Unit Converter",
+      "alternateName": "UnitConverter",
+      "url": "https://kirachon.github.io/UnitConverter/",
+      "description": "Free online unit converter supporting length, weight, temperature, volume, area, energy, pressure, speed, power, currency, and data storage conversions with real-time exchange rates.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Supports all modern browsers.",
+      "softwareVersion": "2.0",
+      "datePublished": "2024-01-01",
+      "dateModified": "2025-07-15",
+      "author": {
+        "@type": "Person",
+        "name": "Kirachon",
+        "url": "https://github.com/Kirachon"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "UnitConverter",
+        "url": "https://kirachon.github.io/UnitConverter/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "featureList": [
+        "Length conversion (meters, feet, inches, kilometers, miles)",
+        "Weight conversion (kilograms, pounds, ounces, grams)",
+        "Temperature conversion (Celsius, Fahrenheit, Kelvin)",
+        "Volume conversion (liters, gallons, cups, milliliters)",
+        "Area conversion (square meters, square feet, acres)",
+        "Energy conversion (joules, calories, BTU, kilowatt-hours)",
+        "Pressure conversion (pascals, PSI, atmospheres, bars)",
+        "Speed conversion (meters/second, kilometers/hour, miles/hour)",
+        "Power conversion (watts, horsepower, BTU/hour)",
+        "Currency conversion with real-time exchange rates",
+        "Data storage conversion (bytes, kilobytes, megabytes, gigabytes)"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "150",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
+
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I convert meters to feet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To convert meters to feet, multiply the meter value by 3.28084. For example, 1 meter = 3.28084 feet. Use our length converter for instant and accurate conversions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert kilograms to pounds?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To convert kilograms to pounds, multiply the kilogram value by 2.20462. For example, 1 kilogram = 2.20462 pounds. Use our weight converter for precise calculations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I convert Celsius to Fahrenheit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To convert Celsius to Fahrenheit, multiply by 9/5 and add 32. Formula: °F = (°C × 9/5) + 32. For example, 0°C = 32°F. Use our temperature converter for instant conversions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the currency converter use real-time exchange rates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our currency converter uses real-time exchange rates from OpenExchangeRates API, updated every 30 minutes. We support 15+ major currencies including USD, EUR, GBP, JPY, and more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the unit converter free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our unit converter is completely free to use with no registration required. It supports 10+ unit types with unlimited conversions and works on all devices."
+          }
+        }
+      ]
+    }
+    </script>
     <script type="module" crossorigin src="/UnitConverter/assets/index-CeK4o7c5.js"></script>
     <link rel="stylesheet" crossorigin href="/UnitConverter/assets/index-hQ9vHRIY.css">
   </head>

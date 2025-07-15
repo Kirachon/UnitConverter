@@ -1,0 +1,72 @@
+{
+  "name": "Universal Unit Converter",
+  "short_name": "UnitConverter",
+  "description": "Free online unit converter supporting length, weight, temperature, volume, area, energy, pressure, speed, power, currency, and data storage conversions.",
+  "start_url": "/UnitConverter/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "scope": "/UnitConverter/",
+  "lang": "en",
+  "categories": ["utilities", "productivity", "tools"],
+  "icons": [
+    {
+      "src": "/UnitConverter/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/UnitConverter/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/UnitConverter/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/UnitConverter/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/UnitConverter/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Length Converter",
+      "short_name": "Length",
+      "description": "Convert between meters, feet, inches, and more",
+      "url": "/UnitConverter/#length",
+      "icons": [{ "src": "/UnitConverter/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Weight Converter",
+      "short_name": "Weight",
+      "description": "Convert between kilograms, pounds, ounces, and more",
+      "url": "/UnitConverter/#weight",
+      "icons": [{ "src": "/UnitConverter/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Temperature Converter",
+      "short_name": "Temperature",
+      "description": "Convert between Celsius, Fahrenheit, and Kelvin",
+      "url": "/UnitConverter/#temperature",
+      "icons": [{ "src": "/UnitConverter/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Currency Converter",
+      "short_name": "Currency",
+      "description": "Convert currencies with real-time exchange rates",
+      "url": "/UnitConverter/#currency",
+      "icons": [{ "src": "/UnitConverter/favicon-32x32.png", "sizes": "32x32" }]
+    }
+  ]
+}
