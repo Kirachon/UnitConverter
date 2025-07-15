@@ -7,7 +7,7 @@ import KeyboardShortcuts from './components/KeyboardShortcuts'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ThemeProvider from './components/ThemeProvider'
-import AdminDashboard from './components/AdminDashboard'
+
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
         </main>
         <Footer />
         <KeyboardShortcuts />
-        <AdminDashboard />
+
       </div>
     </ThemeProvider>
   )
