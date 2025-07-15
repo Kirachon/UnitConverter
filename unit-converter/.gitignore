@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# Environment variables (keep .env.local for GitHub Pages deployment)
+# .env.local
+
+# Documentation build
+docs/build
+docs/.docusaurus
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
