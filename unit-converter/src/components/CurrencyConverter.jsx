@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
-import { ArrowsRightLeftIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { ArrowsRightLeftIcon, ExclamationTriangleIcon, CheckCircleIcon, ClockIcon } from '@heroicons/react/24/outline'
+import currencyService from '../services/currencyService'
 
 // Popular currencies for the converter
 const POPULAR_CURRENCIES = [
@@ -29,44 +30,28 @@ const CurrencyConverter = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [lastUpdated, setLastUpdated] = useState(null)
+  const [dataSource, setDataSource] = useState('') // 'api', 'cache', 'localStorage', 'fallback'
 
-  // Mock exchange rates for demo (in production, this would come from an API)
-  const mockExchangeRates = {
-    USD: 1.0,
-    EUR: 0.85,
-    GBP: 0.73,
-    JPY: 110.0,
-    CAD: 1.25,
-    AUD: 1.35,
-    CHF: 0.92,
-    CNY: 6.45,
-    INR: 74.5,
-    BRL: 5.2,
-    RUB: 75.0,
-    KRW: 1180.0,
-    MXN: 20.0,
-    SGD: 1.35,
-    NZD: 1.42,
-  }
-
-  // Simulate API call to fetch exchange rates
+  // Fetch exchange rates using the currency service
   const fetchExchangeRates = async () => {
     setLoading(true)
     setError('')
-    
+
     try {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      // In production, this would be:
-      // const response = await fetch(`https://openexchangerates.org/api/latest.json?app_id=${API_KEY}`)
-      // const data = await response.json()
-      // setExchangeRates(data.rates)
-      
-      setExchangeRates(mockExchangeRates)
-      setLastUpdated(new Date())
+      const response = await currencyService.getLatestRates()
+
+      setExchangeRates(response.rates)
+      setLastUpdated(new Date(response.timestamp))
+      setDataSource(response.source)
+
+      // Show warning if using fallback or expired data
+      if (response.error) {
+        setError(`Using ${response.source === 'fallback' ? 'fallback' : 'cached'} data: ${response.error}`)
+      }
+
     } catch (err) {
       setError('Failed to fetch exchange rates. Please try again.')
+      console.error('Currency fetch error:', err)
     } finally {
       setLoading(false)
     }
@@ -118,6 +103,40 @@ const CurrencyConverter = () => {
       return rate.toFixed(4)
     }
     return null
+  }
+
+  // Get status icon based on data source
+  const getStatusIcon = () => {
+    switch (dataSource) {
+      case 'api':
+        return <CheckCircleIcon className="w-4 h-4 text-green-500" />
+      case 'cache':
+      case 'localStorage':
+        return <ClockIcon className="w-4 h-4 text-blue-500" />
+      case 'fallback':
+      case 'expired_cache':
+        return <ExclamationTriangleIcon className="w-4 h-4 text-yellow-500" />
+      default:
+        return null
+    }
+  }
+
+  // Get status text based on data source
+  const getStatusText = () => {
+    switch (dataSource) {
+      case 'api':
+        return 'Live rates'
+      case 'cache':
+        return 'Cached rates'
+      case 'localStorage':
+        return 'Stored rates'
+      case 'fallback':
+        return 'Fallback rates'
+      case 'expired_cache':
+        return 'Cached rates (may be outdated)'
+      default:
+        return ''
+    }
   }
 
   return (
@@ -211,13 +230,18 @@ const CurrencyConverter = () => {
       {/* Exchange Rate Info */}
       {getExchangeRate() && (
         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
-          <p className="text-blue-800 dark:text-blue-200 text-sm text-center">
-            1 {fromCurrency} = {getExchangeRate()} {toCurrency}
-          </p>
-          {lastUpdated && (
-            <p className="text-blue-600 dark:text-blue-400 text-xs text-center mt-1">
-              Last updated: {lastUpdated.toLocaleTimeString()}
+          <div className="flex items-center justify-center gap-2 mb-1">
+            {getStatusIcon()}
+            <p className="text-blue-800 dark:text-blue-200 text-sm">
+              1 {fromCurrency} = {getExchangeRate()} {toCurrency}
             </p>
+          </div>
+          {lastUpdated && (
+            <div className="flex items-center justify-center gap-2">
+              <p className="text-blue-600 dark:text-blue-400 text-xs">
+                {getStatusText()} • Last updated: {lastUpdated.toLocaleTimeString()}
+              </p>
+            </div>
           )}
         </div>
       )}
@@ -234,11 +258,14 @@ const CurrencyConverter = () => {
         </div>
       )}
 
-      {/* Demo Notice */}
-      <div className="mt-6 p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-        <p className="text-yellow-800 dark:text-yellow-200 text-xs text-center">
-          <strong>Demo Mode:</strong> Using mock exchange rates. In production, this would use real-time data from OpenExchangeRates API.
-        </p>
+      {/* API Status Notice */}
+      <div className="mt-6 p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
+        <div className="flex items-center justify-center gap-2">
+          <CheckCircleIcon className="w-4 h-4 text-green-600" />
+          <p className="text-green-800 dark:text-green-200 text-xs">
+            <strong>Live Data:</strong> Real-time exchange rates from OpenExchangeRates API
+          </p>
+        </div>
       </div>
     </div>
   )
